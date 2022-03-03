@@ -1,0 +1,122 @@
+body {
+  background-color: rgba(59, 201, 211, 0.253);
+  margin: 0;
+}
+
+header {
+  text-align: center;
+}
+
+#sesion{
+    position: relative;
+    left: 40%
+}
+
+section {
+  padding: 20px;
+}
+#meses {
+  margin: 30px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.mes {
+  background-color: rgba(0, 60, 255, 0.808);
+  width: 7%;
+  height: 20px;
+  color: white;
+  border: 1px solid rgb(5, 5, 114);
+  padding: 13px 0;
+  padding-left: 40px;
+  margin: 15px;
+  border-radius: 18px;
+  min-width: 100px;
+}
+
+.mes:hover {
+  background-color: rgb(0, 183, 255);
+  cursor: pointer;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  height: 100px;
+  width: 100%;
+  background-color: black;
+  color: white;
+}
+
+img {
+  margin-left: 30%;
+  margin-top: 20px;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+.first-day {
+  grid-column-start: 3;
+}
+
+.calendar-wrapper {
+  width: 90%;
+  margin-left: 5%;
+  border:1px solid blue;
+  overflow: hidden;
+}
+.weekday {
+  background: #eee;
+}
+h1 {
+  text-align: center;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+li:not(.weekday) {
+  width: 140%;
+  height: 34px;
+  padding-top: 8px;
+  font-size: 25px;
+}
+
+.entreno:hover {
+  background-color: rgba(0, 140, 255, 0.589);
+  color: white;
+}
+
+.entreno {
+  color: rgb(11, 11, 255);
+}
+
+a{
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 700px) {
+  .mes {
+    padding-left: 10px;
+  }
+  #sesion{
+      left:30%;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .calendar-wrapper {
+    margin: 0;
+  }
+  img {
+    margin-left: 10%;
+    width: 40px;
+  }
+  footer {
+    position: sticky;
+    bottom: 0;
+  }
+}

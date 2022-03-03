@@ -1,0 +1,270 @@
+<!-- Define que el documento esta bajo el estandar de HTML 5 -->
+<!doctype html>
+
+<!-- Representa la raíz de un documento HTML o XHTML. Todos los demás elementos deben ser descendientes de este elemento. -->
+<html lang="es">
+    
+    <head>
+        
+        <meta charset="utf-8">
+        
+        <title> Formulario de Acceso </title>    
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        
+        <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Overpass&display=swap" rel="stylesheet">
+        
+        <!-- Link hacia el archivo de estilos css -->
+        <link rel="stylesheet" href="css/registro.css"/>
+        
+      
+        
+    </head>
+    
+    <body>
+        
+        <div id="contenedor">
+            <div id="central">
+                <div id="login">
+                    <div class="titulo">
+                        Rellena los campos
+                    </div>
+                    <div id="loginform"  >
+                        <input type="text" name="nombre" placeholder="Nombre y Apellidos" id="nombre" value="" required>
+                        <input type="email" name="mail" placeholder="Email" id="mail" value="" required>
+                        <input type="text" name="usuario" placeholder="Usuario (min 5 caracteres)" id="usuario" value="" required>
+                        
+                        <input type="password" placeholder="Pass(min 6, mayus, num, especial)" name="password" id="pass" value=""  required>
+
+                        <input type="number" name="estatura" placeholder="Estatura(cm)" id="estatura" min="140" max="220" required>
+                        <input type="text" name="peso" placeholder="Peso(kg)" id="peso" required>
+
+                        <button id="btnModal">Zonas de frecuencia cardiaca - Rellena los campos</button> 
+                        <div id="myModal" class="modalContainer">
+                            <div class="modal-content">
+                                <span class="close">×</span> <h2>Zonas de frecuencia cardiaca</h2>
+                                <div id="campos">
+                                    <div class="nombres">
+                                        <span>Sprint</span>
+                                        <span>Velocidad</span>
+                                        <span>Cardio</span>
+                                        <span>Fitness</span>
+                                        <span>Sencillo</span>
+                                    </div> 
+                                    <div class="rellena">
+                                        <input type="number" id="sprint" min=50 max=200 placeholder="Numero de pulsaciones"/>
+                                        <input type="number" id="velocidad" min=50 max=200 placeholder="Numero de pulsaciones"/>
+                                        <input type="number" id="cardio" min=50 max=200 placeholder="Numero de pulsaciones"/>
+                                        <input type="number" id="fitness" min=50 max=200 placeholder="Numero de pulsaciones"/>
+                                        <input type="number" id="sencillo" min="50" max="200" placeholder="Numero de pulsaciones"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+
+                        <span id=tipo_> Tipo de corredor</span>
+                        <div id=tipo_corredor>
+                            
+                        
+                            <div id="corredor">
+                            <p>
+                                <input type="radio" id="tipo" name="tipo" class="radio" value="Casual" checked>
+                                <label for="scales">Casual</label>
+                            </p>
+                            <p>
+                                <input type="radio" id="tipo2" name="tipo" class="radio" value="medio">
+                                <label for="scales">Corredor de medio fondo</label>
+                            </p>
+                            <p>
+                                <input type="radio" id="tipo3" name="tipo" class="radio" value="fondo">
+                                <label for="scales">Corredor de fondo</label>
+                            </p>
+                            <p>
+                                <input type="radio" id="tipo4" name="tipo" class="radio" value="trail">
+                                <label for="scales"> Corredor de trail</label>
+                            </p>
+
+                            </div>
+                            <div id="especificaciones">
+                                <div class="esconder" id="medio">
+                                    <p><input type="time" step="1" id="medio1">5 Km</p>
+                                    <p><input type="time" step="1" id="medio2">10 Km</p>
+                                    <p><input type="time" step="1" id="medio3">Media maraton</p>
+                                </div>
+                                <div class="esconder" id="fondo">
+                                    <p><input type="time" step="1" id="fondo1"><span>Media maraton</span></p>
+                                    <p><input type="time" step="1" id="fondo2"><span>Maraton</span></p>
+                                </div>
+                                <div class="esconder" id="trail">
+                                    <input type="text" name="" id="trail1" placeholder="Nombre de la carrera mas larga" >
+                                    <input type="number" name="" id="trail2" placeholder="Distancia">
+                                    <input type="text" name="" id="trail3" placeholder="Desnivel (Porcentaje)">
+                                    <p><input type="time" placeholder="Nombre de la carrera mas larga" step="1" id="trail4"></p>
+                                </div>
+                            </div>
+                        </div> 
+                        
+                        <button  onclick="redireccion()" title="Ingresar" name="Ingresar">Sign Up</button>
+                    </div>
+                    <div class="pie-form">
+                        <a href="./login.html">¿Ya tienes una cuenta? Inicia sesión</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+        let tipo=document.getElementsByName('tipo');
+        for(let i=0; i<tipo.length; i++){
+            tipo[i].addEventListener('change',mostar,false);
+        }
+        let cajon_medio=document.getElementById("medio");
+        let cajon_fondo=document.getElementById("fondo");
+        let cajon_trail=document.getElementById("trail");
+
+        function mostar(){
+            switch(this.value){
+                case 'Casual':
+                    cajon_medio.classList.add("esconder")
+                    cajon_fondo.classList.add("esconder")
+                    cajon_trail.classList.add("esconder")
+                    break;
+                case 'medio':
+                    cajon_medio.classList.remove("esconder")
+                    cajon_fondo.classList.add("esconder")
+                    cajon_trail.classList.add("esconder")
+                    break;
+                case 'fondo':
+                    cajon_medio.classList.add("esconder")
+                    cajon_fondo.classList.remove("esconder")
+                    cajon_trail.classList.add("esconder")
+                    break;
+                case 'trail':
+                    cajon_medio.classList.add("esconder")
+                    cajon_fondo.classList.add("esconder")
+                    cajon_trail.classList.remove("esconder")
+                    break;
+            }
+        }
+        function redireccion() {
+            let crear=true;
+            let patron=/^[a-z ,.'-]+$/i;
+            if(!patron.test(nombre.value)){
+                crear=false;
+            }
+
+            patron=/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+            if(!patron.test(mail.value)){
+                crear=false;
+            }
+
+            patron=/^[a-z0-9ü][a-z0-9ü_]{4,29}$/;
+            if(!patron.test(usuario.value)){
+                crear=false;
+            }
+
+            patron=/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{6,24}$/;
+            if(!patron.test(pass.value)){
+                crear=false;
+            }
+
+            if(estatura.value<140||estatura.value>220){
+                crear=false;
+            }
+
+            patron=/^[0-9]+([,-.][0-9]+)?$/;
+            if(!patron.test(peso.value)){
+                crear=false;
+            }
+
+            if(sprint.value==""||velocidad.value==""||cardio.value==""||fitness.value==""||sencillo.value==""){
+                crear=false;
+            }
+            var seleccion=document.querySelector('input[name=tipo]:checked').value;
+            console.log(seleccion)
+            switch(seleccion){
+                case 'medio':
+                    if(medio1.value==""||medio2.value==""||medio3.value==""){
+                        crear=false;
+                    }
+                    break;
+                    
+                case 'fondo':
+                    if(fondo1.value==""||fondo2.value==""){
+                        crear=false;
+                    }
+                    break;
+                case 'trail':
+
+                    patron=/^[a-z ,.'-]+$/i;
+                    if(!patron.test(trail1.value)){
+                        crear=false;
+                    }
+
+                    patron=/(\d+(\.\d+)?%)/;
+                    if(!patron.test(trail3.value)){
+                        crear=false;
+                    }
+                    if(trail4.value==""||trail2.value==""){
+                        crear=false;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            if(crear){
+                swal.fire({
+                    text:"Nuevo Usuario Registrado",
+                    icon: 'success'
+                }).then((result)=>{
+                    if(result.isConfirmed){
+                        window.location.href = "./login.html";
+                    }
+                });                
+            }else{
+                swal.fire({
+                    text:"Rellena los campos con datos correctos",
+                    icon: 'error',
+                    title: 'Oops...',
+                });    
+            }
+        }
+
+        if(document.getElementById("btnModal")){
+			var modal = document.getElementById("myModal");
+			var btn = document.getElementById("btnModal");
+			var span = document.getElementsByClassName("close")[0];
+			var body = document.getElementsByTagName("body")[0];
+
+			btn.onclick = function() {
+				modal.style.display = "block";
+
+				body.style.position = "static";
+				body.style.height = "100%";
+				body.style.overflow = "hidden";
+			}
+
+			span.onclick = function() {
+				modal.style.display = "none";
+
+				body.style.position = "inherit";
+				body.style.height = "auto";
+				body.style.overflow = "visible";
+			}
+
+			window.onclick = function(event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+
+					body.style.position = "inherit";
+					body.style.height = "auto";
+					body.style.overflow = "visible";
+				}
+			}
+		}
+
+        </script>
+    </body>
+</html>
